@@ -9,7 +9,9 @@ public static class DependencyInjection
 
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddMediatR(configuration => { configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly); });
+        var assembly = typeof(DependencyInjection).Assembly;
+        services.AddMediatR(configuration => { configuration.RegisterServicesFromAssembly(assembly); });
+        services.AddAutoMapper(assembly);
 
         services.AddTransient<PricingService>();
 
