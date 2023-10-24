@@ -1,6 +1,7 @@
 using Bookify.Application.Abstractions.Messaging;
 using FluentValidation;
 using MediatR;
+using ValidationException = Bookify.Application.Exceptions.ValidationException;
 
 namespace Bookify.Application.Abstractions.Behaviours;
 
@@ -45,7 +46,7 @@ public class ValidationBehaviour<TRequest, TResponse>: IPipelineBehavior<TReques
 
         if (validationErrors.Any())
         {
-            throw new Exceptions.ValidationException(validationErrors);
+            throw new ValidationException(validationErrors);
         }
 
         return await next();
