@@ -34,6 +34,9 @@ internal sealed class ApartmentConfiguration: IEntityTypeConfiguration<Apartment
                                                 priceBuilder.Property(m => m.Currency)
                                                             .HasConversion(c => c.Code, code => Currency.FromCode(code));
                                             });
+
+        // Concurrency
+        builder.Property<uint>("Version").IsRequired();
     }
 
     #endregion
