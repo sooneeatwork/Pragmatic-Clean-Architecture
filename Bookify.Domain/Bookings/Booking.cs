@@ -2,6 +2,7 @@ using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
+using Bookify.Domain.Users;
 
 namespace Bookify.Domain.Bookings;
 
@@ -11,6 +12,7 @@ public sealed class Booking: Entity
 
     public Money AmenitiesUpCharge { get; private set; }
 
+    public Apartment Apartment { get; private set; }
     public Guid ApartmentId { get; private set; }
 
     public DateTime? CancelledOnUtc { get; private set; }
@@ -33,6 +35,7 @@ public sealed class Booking: Entity
 
     public Money TotalPrice { get; private set; }
 
+    public User User { get; private set; }
     public Guid UserId { get; private set; }
 
     #endregion
