@@ -6,7 +6,7 @@ public class GetBookingQuery: IQuery<BookingResponse>
 {
     #region Properties
 
-    public Guid BookingId { get; set; }
+    public Guid Id { get; set; }
 
     #endregion
 }

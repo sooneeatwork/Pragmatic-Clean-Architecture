@@ -28,7 +28,7 @@ internal sealed class GetBookingQueryHandler: IQueryHandler<GetBookingQuery, Boo
     public async Task<Result<BookingResponse>> Handle(GetBookingQuery query, CancellationToken cancellationToken)
     {
         var booking = await _getBookingDbQuery
-                            .WithParams(query.BookingId)
+                            .WithParams(query.Id)
                             .WithNoTracking()
                             .ExecuteAsync(cancellationToken);
 
