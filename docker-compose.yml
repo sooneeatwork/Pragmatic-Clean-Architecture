@@ -7,3 +7,16 @@ services:
     build:
       context: .
       dockerfile: Bookify.Api/Dockerfile
+    depends_on:
+      - bookify-db
+
+  bookify-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: Bookify.Db
+    environment:
+      SA_PASSWORD: "Password123!"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - ./.containers/database:/var/lib/sqlserver/data
+    ports:
+      - "1433:1433"
