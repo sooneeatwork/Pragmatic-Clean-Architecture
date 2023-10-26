@@ -1,4 +1,5 @@
 using Bookify.Domain.Abstractions;
+using Bookify.Domain.Bookings;
 using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users;
@@ -12,6 +13,8 @@ public sealed class User: Entity
     public LastName LastName { get; private set; }
 
     public Email Email { get; private set; }
+    
+    public List<Booking> Bookings { get; private set; }
 
     #endregion
 
@@ -23,6 +26,8 @@ public sealed class User: Entity
         LastName = lastName;
         Email = email;
     }
+    
+    private User(){}
 
     #endregion
 

@@ -1,4 +1,5 @@
 using Bookify.Domain.Apartments;
+using Bookify.Domain.Bookings;
 using Bookify.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -35,6 +36,13 @@ internal sealed class ApartmentConfiguration: IEntityTypeConfiguration<Apartment
                                                             .HasConversion(c => c.Code, code => Currency.FromCode(code));
                                             });
 
+
+        builder.Ignore(a => a.Amenities);// Ignore for now
+
+        builder.HasMany(a => a.Bookings)
+               .WithOne(b => b.Apartment)
+               .HasForeignKey(b => b.ApartmentId);
+        
         // Concurrency
         builder.Property<uint>("Version").IsRequired();
     }

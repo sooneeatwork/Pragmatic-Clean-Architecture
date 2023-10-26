@@ -63,6 +63,8 @@ public sealed class Booking: Entity
         Status = status;
         CreatedOnUtc = createdOnUtc;
     }
+    
+    private Booking(){}
 
     #endregion
 

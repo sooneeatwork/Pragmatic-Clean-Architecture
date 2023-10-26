@@ -37,14 +37,7 @@ internal sealed class BookingConfiguration: IEntityTypeConfiguration<Booking>
                                                                   .HasConversion(c => c.Code, code => Currency.FromCode(code));
                                                   });
 
-        builder.OwnsOne(b => b.Duration);
-
-        builder.HasOne<Apartment>()
-               .WithMany()
-               .HasForeignKey(b => b.ApartmentId);
-
-        builder.HasOne<User>()
-               .WithMany()
-               .HasForeignKey(b => b.UserId);
+       // builder.OwnsOne(b => b.Duration);  EF Core 8
+       builder.Ignore(b => b.Duration);
     }
 }

@@ -21,6 +21,11 @@ public abstract class Entity
         Id = id;
     }
 
+    protected Entity()
+    {
+        
+    }
+
     #endregion
 
     #region Private Methods
