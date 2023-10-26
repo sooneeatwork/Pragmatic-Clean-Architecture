@@ -1,12 +1,14 @@
 using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Email;
 using Bookify.Application.Apartments.SearchApartments;
+using Bookify.Application.Bookings.GetBooking;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings;
 using Bookify.Domain.Users;
 using Bookify.Infrastructure.Clock;
 using Bookify.Infrastructure.Data.Queries.Apartments;
+using Bookify.Infrastructure.Data.Queries.Bookings;
 using Bookify.Infrastructure.Email;
 using Bookify.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +42,7 @@ public static class DependencyInjection
 
         // DbQueries
         services.AddScoped<ISearchApartmentsDbQuery, SearchApartmentsDbQuery>();
-
+        services.AddScoped<IGetBookingDbQuery, GetBookingsDbQuery>();
 
         return services;
     }
